@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t psick22/docker-cicd-study -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true psick22/docker-cicd-study npm run test
